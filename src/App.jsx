@@ -1,33 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
-import KBCard from './Componenets/Card.jsx'
+import SwimLane from './Componenets/SwimLane';
+import { Box } from '@material-ui/core';
 
-const data = [{title:"Test title" , desc: "1234"}, {title: "title test", desc: "4321"}, {title: "group 31", desc: "100000"} ];
+const data = [{title:"A title" , desc: "1234"}, {title: "Placeholder task", desc: "4321"}, {title: "Group 31", desc: "100/100"}, {title: "IBM open-audio-software", desc: "Never Forget"} ];
+const swimlanes=[
+                  {cards: [data[0], data[1], data[2]], title:"To Do" },
+                  {cards: [data[3], data[2], data[0]], title:"In Progress"},  
+                  {cards: [data[0], data[1], data[2]], title:"Done" }
+                ]
 
 function App() {
   return (
     
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> 
-      
-      { data?.map( card => 
-      <KBCard title={card?.title} desc={card?.desc}/>
-      )
-    }
-    </div>
+    <Box sx={{
+      display: 'flex',
+      alignItems: 'flex-start',
+      flexDirection: 'row',
+      p: 1,
+      m: 1,
+      borderRadius: 1,
+    }}>
+      {swimlanes?.map(lane => 
+        <SwimLane swimLaneData = {lane.cards} swimLaneTitle={lane.title} />
+        )}
+    </Box>
   );
 }
 
