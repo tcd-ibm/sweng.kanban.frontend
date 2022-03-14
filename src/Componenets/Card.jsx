@@ -5,8 +5,8 @@ import { Box } from '@mui/system';
 const KBCard = ({title, desc }) => {
     return (
 <>
-    <Card>
-    <Box sx={{ p: 2, display: 'flex' }}>
+    <Card testid="card">
+    <Box sx={{ bgcolor: '#FBFFC8', p: 2, display: 'flex' }}>
       <CardContent>
         <Typography variant="h5" component="h2">
           {title}
