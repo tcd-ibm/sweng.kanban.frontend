@@ -1,18 +1,30 @@
 import React from 'react';
-import { render } from "@testing-library/react";
+import  renderer  from "react-test-renderer";
 import { shallow } from 'enzyme';
-import Card from './Componenets/Card';
+import KBCard from './Card';
+
+
 
 describe('Card Component', () => {
 
     it("renders without crashing", () => {
-        shallow(<Card />);
+        shallow(<KBCard />);
       });
+    it('renders a snapshot', () => {
+        const cardSnap = renderer.create(<KBCard testid="card"/>).toJSON();
+        expect(cardSnap).toMatchSnapshot();
+      });
+
       it('renders the title of the card', () => {
-        const wrapper = shallow(<Card testid="card" />);
-        const title = Card.title;
-    
-        expect(wrapper.contains(title)).toEqual(true);
+        const cardSnap = renderer.create(<KBCard text="KBCard.title"/>).toJSON();
+        expect(cardSnap).toMatchSnapshot();  
        
-    })
-})
+    });
+    it('renders the description in the card', () => {
+        const cardSnap = renderer.create(<KBCard text="KBCard.desc"/>).toJSON();
+        expect(cardSnap).toMatchSnapshot();  
+       
+    });
+
+    
+});

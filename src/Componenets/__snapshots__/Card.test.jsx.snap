@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component renders a snapshot 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  testid="card"
+>
+  <div
+    className="MuiBox-root css-cqh5gh"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h5"
+      />
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+        style={
+          Object {
+            "marginBottom": 12,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card Component renders the description in the card 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  testid="card"
+>
+  <div
+    className="MuiBox-root css-cqh5gh"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h5"
+      />
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+        style={
+          Object {
+            "marginBottom": 12,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card Component renders the title of the card 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  testid="card"
+>
+  <div
+    className="MuiBox-root css-cqh5gh"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h5"
+      />
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+        style={
+          Object {
+            "marginBottom": 12,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
