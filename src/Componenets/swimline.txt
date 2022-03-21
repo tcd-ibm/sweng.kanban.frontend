@@ -1,0 +1,3 @@
+This component generates the swimline which holds cards. There's three swimlines: TODO, Doing, and Done.
+Map function is used to get data from API and render cards with those data in each swimlane.
+Users are allowed to edit cards in swimlanes for example draging them through swilanes,or delete cards.
