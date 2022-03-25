@@ -24,6 +24,12 @@ function App() {
       {swimlanes?.map(lane => 
         <SwimLane swimLaneData = {lane.cards} swimLaneTitle={lane.title} />
         )}
+<<<<<<< HEAD
+=======
+      
+    
+    
+>>>>>>> origin/development
     </Box>
   );
 }
