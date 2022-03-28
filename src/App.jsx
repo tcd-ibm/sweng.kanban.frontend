@@ -1,10 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import SwimLane from './Componenets/SwimLane';
+<<<<<<< HEAD
 import { Box, Typography, Button } from '@material-ui/core';
+=======
+import { Box, Button, Typography } from '@material-ui/core';
+import { useQuery } from 'react-query';
+>>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
 import axios from 'axios';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import React from "react";
+<<<<<<< HEAD
 import Modal from '@mui/material/Modal';
+=======
+>>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
 
 
 
@@ -23,6 +31,7 @@ return data
  }
  
 
+<<<<<<< HEAD
  const KanbanPostRequest = async () =>({
   method: 'post',
   url: 'http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/createTask',
@@ -47,6 +56,28 @@ function App() {
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
 
+=======
+const KanbanGETRequest = async () =>{
+                  
+ const data = await axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
+        .then(res => { return res})
+        return data
+      
+     
+    }
+function App() {
+  const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
+  const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
+  console.log(data)
+  return (
+    <>
+    <Button variant="contained" onClick={refetch} size="large" color="primary">
+      <RefreshIcon />
+      <Typography>
+Fetch Data
+      </Typography>
+    </Button>
+>>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
 
   return (
     <>
@@ -67,13 +98,21 @@ const handleClose = () => setOpen(false);
       m: 1,
       borderRadius: 1,
     }}>
+<<<<<<< HEAD
 
       {swimlanes?.map(lane => 
         <SwimLane swimLaneData = {lane.cards} swimLaneTitle={lane.title} />
+=======
+      {swimLaneData?.map(lane => 
+        <SwimLane swimLaneData = {lane.kanbanswimLaneTasks} swimLaneTitle={lane.swimLaneTitle} />
+>>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
         )}
       
     </Box> 
+<<<<<<< HEAD
     </Modal>
+=======
+>>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
     </>
   );
 }
