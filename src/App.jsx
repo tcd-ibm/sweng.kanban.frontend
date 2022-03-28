@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import SwimLane from './Componenets/SwimLane';
-import { Box } from '@material-ui/core';
+import { Box, Button, Typography } from '@material-ui/core';
+import { useQuery } from 'react-query';
 import axios from 'axios';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import React from "react";
-import { useEffect } from 'react';
 
 
 
@@ -15,14 +15,26 @@ const swimlanes=[
                   {cards: [data[0], data[1], data[2]], title:"Done" }
                 ] 
 
-
+const KanbanGETRequest = async () =>{
+                  
+ const data = await axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
+        .then(res => { return res})
+        return data
+      
+     
+    }
 function App() {
-
-  useEffect(() => {
-    axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
-    .then(res => console.log(res.data[0]))
-  },[])
+  const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
+  const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
+  console.log(data)
   return (
+    <>
+    <Button variant="contained" onClick={refetch} size="large" color="primary">
+      <RefreshIcon />
+      <Typography>
+Fetch Data
+      </Typography>
+    </Button>
 
     
     <Box sx={{
@@ -33,13 +45,14 @@ function App() {
       m: 1,
       borderRadius: 1,
     }}>
-      {swimlanes?.map(lane => 
-        <SwimLane swimLaneData = {lane.cards} swimLaneTitle={lane.title} />
+      {swimLaneData?.map(lane => 
+        <SwimLane swimLaneData = {lane.kanbanswimLaneTasks} swimLaneTitle={lane.swimLaneTitle} />
         )}
       
     
     
     </Box> 
+    </>
   );
 }
 
