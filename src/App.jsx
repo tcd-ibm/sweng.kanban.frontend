@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import SwimLane from './Componenets/SwimLane';
-import { Box } from '@material-ui/core';
+import { Box, Typography, Button } from '@material-ui/core';
 import axios from 'axios';
 import React from "react";
-import { useEffect } from 'react';
+import Modal from '@mui/material/Modal';
 
 
 
@@ -14,17 +14,51 @@ const swimlanes=[
                   {cards: [data[3], data[2], data[0]], title:"In Progress"},  
                   {cards: [data[0], data[1], data[2]], title:"Done" }
                 ] 
+ const KanbanGETRequest = async () =>{
+                  
+ const data = await axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
+.then(res => { return res})
+return data
+                       
+ }
+ 
 
-
+ const KanbanPostRequest = async () =>({
+  method: 'post',
+  url: 'http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/createTask',
+  data: {
+    taskTitle: 'title',
+    cardDescription: 'desc',
+    swimlaneTitle: 'ToDo'
+  }
+}); 
+/*axios.post('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/createTask',{
+  data: {
+    taskTitle: 'title',
+    cardDescription: 'desc',
+    swimlaneTitle: 'ToDo'
+  }
+}) 
+.then(function (response) {
+  console.log(response);
+}) */
 function App() {
+  const [open, setOpen] = React.useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
 
-  useEffect(() => {
-    axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
-    .then(res => console.log(res.data[0]))
-  },[])
+
   return (
-
-    
+    <>
+    <Button variant="outlined" onClick={handleOpen}>New Card</Button>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="card"
+      //aria-describedby="modDesc"
+    >
+   
+      
     <Box sx={{
       display: 'flex',
       alignItems: 'flex-start',
@@ -33,13 +67,14 @@ function App() {
       m: 1,
       borderRadius: 1,
     }}>
+
       {swimlanes?.map(lane => 
         <SwimLane swimLaneData = {lane.cards} swimLaneTitle={lane.title} />
         )}
       
-    
-    
     </Box> 
+    </Modal>
+    </>
   );
 }
 
