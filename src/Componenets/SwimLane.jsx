@@ -10,7 +10,7 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         flexDirection: 'column',
         bgcolor: '#9bbedb',
         p: 1,
-        m: 1,
+        m: 2,
         borderRadius: 1
       }}
     >
@@ -25,7 +25,7 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         }}
       >
         {swimLaneData?.map(card =>
-          <KBCard title={card.taskTitle} desc={card.taskDescription}/>
+          <KBCard title={card.taskTitle} desc={card.taskDescription} key={card._id}/>
           )
         }
       </Box>
