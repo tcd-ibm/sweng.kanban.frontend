@@ -1,5 +1,5 @@
 import './App.css';
-import SwimLane from './Componenets/SwimLane';
+import SwimLane from './Componenets/SwimLane/SwimLane';
 import { Box, Button, Typography } from '@material-ui/core';
 import {CircularProgress} from '@mui/material';
 import { useQuery } from 'react-query';

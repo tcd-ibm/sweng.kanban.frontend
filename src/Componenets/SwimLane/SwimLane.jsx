@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
-import KBCard from './Card';
+import KBCard from '../Card/Card';
 
 const SwimLane = ({swimLaneData, swimLaneTitle}) => {
 
