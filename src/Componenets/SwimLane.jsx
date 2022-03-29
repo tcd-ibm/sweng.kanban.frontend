@@ -3,6 +3,7 @@ import { Box, Typography } from '@material-ui/core';
 import KBCard from './Card';
 
 const SwimLane = ({swimLaneData, swimLaneTitle}) => {
+
   return (
       <Box sx={{
         display: 'flex',
@@ -10,7 +11,7 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         flexDirection: 'column',
         bgcolor: '#9bbedb',
         p: 1,
-        m: 1,
+        m: 2,
         borderRadius: 1
       }}
       >
@@ -23,11 +24,14 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
           m: 1,
           borderRadius: 3
         }}
-        >
-          {swimLaneData?.map(card => <KBCard title={card.title} desc={card.desc} />
-          )}
-        </Box>
+      >
+        {swimLaneData?.map(card =>
+          <KBCard title={card.taskTitle} desc={card.taskDescription} key={card._id}/>
+          )
+        }
       </Box>
+    </Box>
+
   )
 }
 export default SwimLane;
