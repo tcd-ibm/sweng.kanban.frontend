@@ -25,7 +25,7 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         }}
       >
         {swimLaneData?.map(card =>
-          <KBCard title={card.title} desc={card.desc}/>
+          <KBCard title={card.taskTitle} desc={card.taskDescription}/>
           )
         }
       </Box>

@@ -26,13 +26,12 @@ const KanbanGETRequest = async () =>{
 function App() {
   const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
   const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
-  console.log(data)
   return (
     <>
     <Button variant="contained" onClick={refetch} size="large" color="primary">
       <RefreshIcon />
       <Typography>
-Fetch Data
+        Fetch Data
       </Typography>
     </Button>
 
@@ -46,7 +45,7 @@ Fetch Data
       borderRadius: 1,
     }}>
       {swimLaneData?.map(lane => 
-        <SwimLane swimLaneData = {lane.kanbanswimLaneTasks} swimLaneTitle={lane.swimLaneTitle} />
+        <SwimLane swimLaneData = {lane.kanbanSwimLaneTasks} swimLaneTitle={lane.swimLaneTitle} />
         )}
       
     
