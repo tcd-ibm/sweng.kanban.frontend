@@ -20,7 +20,7 @@ const KanbanGETRequest = async () =>{
      
     }
 function App() {
-  const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
+  const {data, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
   const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
   return (
     <>
