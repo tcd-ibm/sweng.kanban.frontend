@@ -3,6 +3,7 @@ import { Box, Typography } from '@material-ui/core';
 import KBCard from './Card';
 
 const SwimLane = ({swimLaneData, swimLaneTitle}) => {
+
   return (
     <Box sx={{
         display: 'flex',
