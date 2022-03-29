@@ -5,7 +5,7 @@ import KBCard from './Card';
 const SwimLane = ({swimLaneData, swimLaneTitle}) => {
 
   return (
-    <Box sx={{
+      <Box sx={{
         display: 'flex',
         alignItems: 'flex-start',
         flexDirection: 'column',
@@ -14,9 +14,9 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         m: 2,
         borderRadius: 1
       }}
-    >
-      <Typography>{swimLaneTitle}</Typography>
-      <Box sx={{
+      >
+        <Typography>{swimLaneTitle}</Typography>
+        <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           bgcolor: '#f5a7bb',
@@ -31,6 +31,7 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         }
       </Box>
     </Box>
+
   )
 }
 export default SwimLane;

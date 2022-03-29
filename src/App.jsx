@@ -42,6 +42,7 @@ function App() {
       borderRadius: 1,
     }}>
 
+
       { isLoading ? <CircularProgress /> :
       swimLaneData?.map(lane => 
         <SwimLane swimLaneData = {lane.kanbanSwimLaneTasks} swimLaneTitle={lane.swimLaneTitle} key={lane._id}/>
