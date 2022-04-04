@@ -1,4 +1,3 @@
-import '../App.css';
 import SwimLane from '../Componenets/SwimLane/SwimLane';
 import { Box, Button, Typography } from '@material-ui/core';
 import {CircularProgress} from '@mui/material';
@@ -6,11 +5,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import React from "react";
-
-
-
  
-
 const KanbanGETRequest = async () =>{
                   
  const data = await axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
@@ -43,7 +38,7 @@ function App() {
     }}>
 
 
-      { isLoading ? <CircularProgress /> :
+      { isLoading ? <CircularProgress size={150} /> :
       swimLaneData?.map(lane => 
         <SwimLane swimLaneData = {lane.kanbanSwimLaneTasks} swimLaneTitle={lane.swimLaneTitle} key={lane._id}/>
         )

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import KBCard from '../Card/Card';
 
-const SwimLane = ({swimLaneData, swimLaneTitle}) => {
+const SwimLane = ({swimLaneData, swimLaneTitle, isLoading}) => {
 
   return (
       <Box sx={{
@@ -19,7 +19,6 @@ const SwimLane = ({swimLaneData, swimLaneTitle}) => {
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
-          bgcolor: '#f5a7bb',
           p: 1,
           m: 1,
           borderRadius: 3

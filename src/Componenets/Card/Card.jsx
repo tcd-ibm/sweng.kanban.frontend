@@ -6,8 +6,8 @@ const KBCard = ({title, desc, id }) => {
     return (
 <>
     <Card testid="card" key={id}>
-    <Box sx={{ bgcolor: '#FBFFC8', p: 2, display: 'flex', my:2, border:1 }}>
-      <CardContent>
+    <Box sx={{ bgcolor: '#FBFFC8', p: 2, display: 'flex', m:2, border:1 }}>
+      <CardContent  >
         <Typography variant="h5" component="h2">
           {title}
         </Typography>
