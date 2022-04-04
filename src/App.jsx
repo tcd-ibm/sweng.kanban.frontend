@@ -4,6 +4,7 @@ import SwimLane from './Componenets/SwimLane';
 import { Box, Typography, Button } from '@material-ui/core';
 =======
 import { Box, Button, Typography } from '@material-ui/core';
+import {CircularProgress} from '@mui/material';
 import { useQuery } from 'react-query';
 >>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
 import axios from 'axios';
@@ -16,6 +17,7 @@ import Modal from '@mui/material/Modal';
 
 
 
+<<<<<<< HEAD
 const data = [{title:"A title" , desc: "1234"}, {title: "Placeholder task", desc: "4321"}, {title: "Group 31", desc: "100/100"}, {title: "IBM open-audio-software", desc: "Never Forget"} ];
 const swimlanes=[
                   {cards: [data[0], data[1], data[2]], title:"To Do" },
@@ -55,6 +57,9 @@ function App() {
   const [open, setOpen] = React.useState(false);
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
+=======
+ 
+>>>>>>> e5ac8be16014b51a2803b8872f193edd1716c882
 
 =======
 const KanbanGETRequest = async () =>{
@@ -68,17 +73,18 @@ const KanbanGETRequest = async () =>{
 function App() {
   const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
   const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
-  console.log(data)
   return (
     <>
+
     <Button variant="contained" onClick={refetch} size="large" color="primary">
       <RefreshIcon />
       <Typography>
-Fetch Data
+        Fetch Data
       </Typography>
     </Button>
 >>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
 
+<<<<<<< HEAD
   return (
     <>
     <Button variant="outlined" onClick={handleOpen}>New Card</Button>
@@ -91,6 +97,10 @@ Fetch Data
    
       
     <Box sx={{
+=======
+    
+     <Box sx={{
+>>>>>>> e5ac8be16014b51a2803b8872f193edd1716c882
       display: 'flex',
       alignItems: 'flex-start',
       flexDirection: 'row',
@@ -98,6 +108,7 @@ Fetch Data
       m: 1,
       borderRadius: 1,
     }}>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
       {swimlanes?.map(lane => 
@@ -113,8 +124,21 @@ Fetch Data
     </Modal>
 =======
 >>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
+=======
+
+
+      { isLoading ? <CircularProgress /> :
+      swimLaneData?.map(lane => 
+        <SwimLane swimLaneData = {lane.kanbanSwimLaneTasks} swimLaneTitle={lane.swimLaneTitle} key={lane._id}/>
+        )
+      
+    
+    
+      }
+      </Box> 
+>>>>>>> e5ac8be16014b51a2803b8872f193edd1716c882
     </>
-  );
+  )
 }
 
 export default App;
