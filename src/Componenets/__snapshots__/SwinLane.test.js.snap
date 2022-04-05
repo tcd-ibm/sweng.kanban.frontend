@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when there are no items 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-1"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  />
+  <div
+    className="MuiBox-root MuiBox-root-2"
+  />
+</div>
+`;
