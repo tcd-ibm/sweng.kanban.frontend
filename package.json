@@ -3,15 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@material-ui/core": "^4.12.3",
-<<<<<<< HEAD
     "@material-ui/icons": "^4.11.2",
-=======
->>>>>>> d310d334a4ee5fbde8fa10071fa1a25d4a88da29
     "@mui/icons-material": "^5.5.1",
-    "@mui/material": "^5.5.3",
+    "@mui/material": "^5.4.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -26,8 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --",
-    "coverage": "jest --collectCoverage --",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
