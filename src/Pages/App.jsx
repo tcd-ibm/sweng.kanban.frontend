@@ -5,10 +5,11 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import React from "react";
- 
-const KanbanGETRequest = async () =>{
+
+
+ const KanbanGETRequest = async () =>{
                   
- const data = await axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
+ const data = await axios.get('https://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
         .then(res => { return res})
         return data
       
@@ -36,7 +37,6 @@ function App() {
       m: 1,
       borderRadius: 1,
     }}>
-
 
       { isLoading ? <CircularProgress size={150} /> :
       swimLaneData?.map(lane => 
