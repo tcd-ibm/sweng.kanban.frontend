@@ -5,15 +5,15 @@ import {CircularProgress} from '@mui/material';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import ModalTask from './Componenets/ModalTask/ModalTask';
 import React from "react";
-import Modal from '@mui/material/Modal';
 
 
 
 
  const KanbanGETRequest = async () =>{
                   
- const data = await axios.get('http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
+ const data = await axios.get('http://kanbanbackend-dev-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/listAllKanbanBoards')
 .then(res => { return res})
 return data
                        
@@ -27,6 +27,7 @@ const handleClose = () => setOpen(false);
 
   const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
   const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
+  console.log(swimLaneData)
 
   return (
     <>
@@ -40,12 +41,14 @@ const handleClose = () => setOpen(false);
 
   
     <Button variant="outlined" onClick={handleOpen}>New Card</Button>
-    <Modal
+    <ModalTask
       open={open}
       onClose={handleClose}
       aria-labelledby="card"
+      refetch={refetch}
       //aria-describedby="modDesc"
     >
+      </ModalTask>
    
     
     
@@ -64,13 +67,8 @@ const handleClose = () => setOpen(false);
       { isLoading ? <CircularProgress /> :
       swimLaneData?.map(lane => 
         <SwimLane swimLaneData = {lane.kanbanSwimLaneTasks} swimLaneTitle={lane.swimLaneTitle} key={lane._id}/>
-        )
-      
-    
-    
-      }
+        )}
       </Box> 
-      </Modal>
 
     </>
   )
