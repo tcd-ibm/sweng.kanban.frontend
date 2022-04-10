@@ -15,7 +15,13 @@ const SwimLane = ({swimLaneData, swimLaneTitle, isLoading}) => {
         borderRadius: 1
       }}
       >
-        <Typography>{swimLaneTitle}</Typography>
+        <Box sx={{
+        display: 'flex',
+        alignSelf: 'center',
+        p: 1,
+        borderRadius: 1}}>
+        <Typography variant="h5">{swimLaneTitle}</Typography>
+        </Box>
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -25,7 +31,7 @@ const SwimLane = ({swimLaneData, swimLaneTitle, isLoading}) => {
         }}
       >
         {swimLaneData?.map(card =>
-          <KBCard title={card.taskTitle} desc={card.taskDescription} key={card._id}/>
+          <KBCard title={card.taskTitle} desc={card.taskDescription} key={card._id} swimLaneTitle={swimLaneTitle}/>
           )
         }
       </Box>
