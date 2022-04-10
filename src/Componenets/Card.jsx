@@ -7,9 +7,9 @@ const MoveTask = async () => {
   const headers = {
     'Content-Type': 'application/json'
 }
-
+const {REACT_APP_API_ENDPOINT} = process.env;
 await axios.post(
-    'http://kanbanbackend-dev-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/moveTask',
+    `${REACT_APP_API_ENDPOINT}/moveTask`,
     {
         oldSwimlane: "todo",
         targetSwimlane: "doing",

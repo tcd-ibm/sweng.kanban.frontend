@@ -22,11 +22,11 @@ return data
 
 function App() {
   const [open, setOpen] = React.useState(false);
-const handleOpen = () => setOpen(true);
-const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  const {data, isSuccess, isError, isLoading, refetch} =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
-  const swimLaneData = data ? data.data[0].kanbanBoardSwimLanes : null;
+  const allKanban =  useQuery('kanbanBoards', KanbanGETRequest, {enabled: false })
+  const swimLaneData = allKanban.data ? allKanban.data.data[0].kanbanBoardSwimLanes : null;
   console.log(swimLaneData)
 
   return (
@@ -64,7 +64,7 @@ const handleClose = () => setOpen(false);
 
       
 
-      { isLoading ? <CircularProgress /> :
+      { allKanban.isLoading ? <CircularProgress /> :
       swimLaneData?.map(lane => 
         <SwimLane swimLaneData = {lane.kanbanSwimLaneTasks} swimLaneTitle={lane.swimLaneTitle} key={lane._id}/>
         )}
