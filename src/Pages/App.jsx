@@ -35,7 +35,6 @@ function App() {
   const [kanbanId, setKanbanId] = useState(allKanban.data ? allKanban.data.data[0]._id : '');
   const kanbanData = allKanban.data ? kanbanId ? allKanban.data.data.filter(board => board._id === kanbanId) : allKanban.data.data[0] : null;
   const swimLaneData = kanbanData ? kanbanData[0]?.kanbanBoardSwimLanes : null;
-  console.log(allKanban.data)
 
   return (
     <>
