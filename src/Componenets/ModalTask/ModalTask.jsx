@@ -1,56 +1,69 @@
-import React from 'react'
-import {Dialog, Box, Typography, TextField, Button} from '@mui/material'
+import React, { useState } from 'react'
+import { Dialog, Box, Typography, TextField, Button, Select, MenuItem, InputLabel } from '@mui/material'
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
-const CreateTask = async () => {
-    const headers = {
-        'Content-Type': 'application/json'
+
+const ModalTask = ({ open, onClose, swimlaneData }) => {
+    const [taskTitle, setTaskTitle] = useState('');
+    const [taskDescription, setTaskDescription] = useState('');
+    const [swimlaneId, setSwimlaneId] = useState('')
+    const { refetch } = useQuery('kanbanBoards', { enabled: false })
+
+    const CreateTask = async () => {
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        const { REACT_APP_API_ENDPOINT } = process.env;
+        await axios.post(
+            `${REACT_APP_API_ENDPOINT}/createTask`,
+            {
+                taskTitle: `${taskTitle}`,
+                taskDescription: `${taskDescription}`,
+                swimLaneId: `${swimlaneId}`
+            },
+            headers);
+        refetch()
     }
-    
-    await axios.post(
-        'http://kanbanbackend-dev-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/createTask',
-        {
-            taskTitle: "Test Task Title",
-            taskDescription: "Test Task Description",
-            swimlaneTitle: "todo"
-        },
-        headers);
-}
 
-const ModalTask = ({open, onClose,}) => {
-    
     return (
         <Dialog open={open} onClose={onClose} fullWidth>
             <Box
-            sx={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                flexDirection: 'column',
-                p: 1,
-                m: 1,
-                borderRadius: 1,
-              }}>
+                sx={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    flexDirection: 'column',
+                    p: 1,
+                    m: 1,
+                    borderRadius: 1,
+                }}>
                 <Typography> Create New Task</Typography>
                 <Box sx={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                flexDirection: 'row',
-                p: 1,
-                m: 1,
-                borderRadius: 1,
-              }}>
-                <TextField label="Task Title"defaultValue="Test Task Title"/>
-                <TextField label="Task description" defaultValue="Test Task Description" />
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    flexDirection: 'row',
+                    p: 1,
+                    m: 1,
+                    borderRadius: 1,
+                }}>
+                    <TextField label="Task Title" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />
+                    <TextField label="Task description" value={taskDescription} onChange={(e) => setTaskDescription(e.target.value)} />
+                    <InputLabel>Choose Swimlane</InputLabel>
+                    <Select label="Choose Swimlane" value={swimlaneId} onChange={(e) => setSwimlaneId(e.target.value)}>
+                        {swimlaneData ? swimlaneData?.map(s =>
+                            <MenuItem value={s._id} key={s._id}>{s.swimLaneTitle}</MenuItem>
+                        ) : <MenuItem key={'NAN'}> No swimlane available</MenuItem>}
+                    </Select>
                 </Box>
                 <Box sx={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                flexDirection: 'row',
-                p: 1,
-                m: 1,
-                borderRadius: 1,
-              }}>
-                  <Button variant="contained" onClick={() => {CreateTask(); onClose();}}>Create Task</Button>
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    flexDirection: 'row',
+                    p: 1,
+                    m: 1,
+                    borderRadius: 1,
+                }}>
+                    <Button variant="contained" onClick={() => { CreateTask(); onClose(); }}>Create Task</Button>
                 </Box>
             </Box>
         </Dialog>
